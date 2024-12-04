@@ -1,28 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 export const ContentStage = () => {
-  const [showImage, setShowImage] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowImage(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="w-screen h-screen bg-gradient-to-b from-65% from-[#3bbfa0] to-[#54cc96] flex items-center justify-center relative">
       <AnimatePresence>
-        {!showImage && (
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-65% from-[#3bbfa0] to-[#54cc96]"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
-          />
-        )}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-b from-65% from-[#3bbfa0] to-[#54cc96]"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+          exit={{ opacity: 0 }}
+        />
       </AnimatePresence>
       <motion.div
         className="absolute inset-0 bg-cover bg-center"
@@ -30,8 +18,8 @@ export const ContentStage = () => {
           backgroundImage: 'url("https://cdn.dropp.cloud/yy185g.jpg")',
         }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: showImage ? 1 : 0 }}
-        transition={{ duration: 1.5 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
       />
       <motion.button
         className="text-xl text-white absolute top-[50px] right-[30px] z-10"
