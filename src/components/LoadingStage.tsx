@@ -3,7 +3,7 @@ import { Logo } from "./Logo";
 import { useState } from "react";
 
 interface LoadingStageProps {
-  onComplete?: () => void;
+  onComplete: () => void;
 }
 
 export const LoadingStage = ({ onComplete }: LoadingStageProps) => {
@@ -22,7 +22,7 @@ export const LoadingStage = ({ onComplete }: LoadingStageProps) => {
       onAnimationComplete={() => {
         if (logoAnimationComplete) {
           setGapsClosed(true);
-          onComplete?.();
+          onComplete();
         }
       }}
     >
